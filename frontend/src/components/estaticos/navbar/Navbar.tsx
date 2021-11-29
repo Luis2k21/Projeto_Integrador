@@ -1,12 +1,17 @@
-import { AppBar, Box, Toolbar, Typography } from '@material-ui/core';
 import React from 'react';
+import { AppBar, Box, Toolbar } from '@material-ui/core';
 import { Link, useHistory } from 'react-router-dom';
-import useLocalStorage from 'react-use-localstorage';
-import './Navbar.css';
+import MenuIcon from '@mui/icons-material/Menu';
+import Typography from '@mui/material/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { TokenState } from '../../../store/tokens/tokensReducer';
 import { addToken } from '../../../store/tokens/actions';
 import { toast } from 'react-toastify';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import './Navbar.css';
+import PaidIcon from '@mui/icons-material/Paid';
+import HealingSharpIcon from '@mui/icons-material/HealingSharp';
 
 function Navbar() {
 
@@ -17,10 +22,9 @@ function Navbar() {
 
     const dispatch = useDispatch();
 
-
     function goLogout() {
         dispatch(addToken(''))
-        toast.info("Usuario deslogado", {
+        toast.info("Usuário deslogado", {
             position: "top-right",
             autoClose: 2000,
             hideProgressBar: false,
@@ -35,70 +39,47 @@ function Navbar() {
 
     var navbarComponent;
 
+    //Daqui para baixo é constante de NavBar
 
     if (token !== "") {
         navbarComponent = <div>
-            <AppBar position="fixed" className="navcor div alignItemsNav">
-                <Toolbar variant="regular">
-                    <Box className="cursor alignItemsNav">
-                        <Typography variant="h5" color="inherit" >
-                            <Link to="/home">
-                                <img src="https://cdn-icons-png.flaticon.com/512/758/758729.png" alt="logo" height="25px" />
-                            </Link>
+            <Box sx={{ flexGrow: 1 }}>
+                <AppBar position="fixed" className="navcor">
+                    <Toolbar>
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="menu"
+                            sx={{ mr: 2 }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Link to="/home">
+                            <img src="https://i.imgur.com/FpzQD5k.png" alt="" width="70px" height="60px" className="logo" />
+                        </Link>
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         </Typography>
-                    </Box>
 
-                    <Box display="flex">
+                        <Link to="/donate" className="textLogin">              
+                                    <Button color="inherit"><PaidIcon
+                                    /> Doações</Button>                             
+                            </Link>
 
-                        <Box mx={1} className="cursor">
-                        </Box>
+                            <Link to="/sobre" className="textLogin paddingButtonNav">
+                                    <Button color="inherit"><HealingSharpIcon /> Sobre Nós
+                                    </Button>
+                            </Link>
 
-
-
-                        <Link to='/donate' className="text-decorator-none">
-                            <Box mx={1} className="cursor">
-                                <Typography variant="h6" color="inherit">
-                                    Doações
-                                </Typography>
-                            </Box>
+                        <Link to="/login" className="textLogin">
+                            <Button color="inherit" onClick={goLogout}>
+                                Logout
+                            </Button>
                         </Link>
-                        
-
-
-                        <Box mx={1} className="cursor">
-                            <Typography variant="h6" color="inherit">
-                                Notícias
-                            </Typography>
-                        </Box>
-
-
-                        <Link to="/sobre" className="text-decorator-none">
-                            <Box mx={1} className="cursor">
-                                <Typography variant="h6" color="inherit">
-                                    Sobre Nós
-                                </Typography>
-                            </Box>
-                        </Link>
-
-
-
-
-                        <Link to="/login" className="text-decorator-none">
-                            <Box mx={1} className="cursor" onClick={goLogout}>
-                                <Typography variant="h6" color="inherit">
-                                    Logout
-                                </Typography>
-                            </Box>
-                        </Link>
-
-                    </Box>
-                    <Box display="flex" justifyContent="flex-end" >
-                    </Box>
-
-                </Toolbar>
-            </AppBar>
+                    </Toolbar>
+                </AppBar>
+            </Box>
         </div >
-
     }
 
     return (

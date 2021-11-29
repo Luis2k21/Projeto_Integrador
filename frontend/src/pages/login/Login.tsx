@@ -42,7 +42,7 @@ function Login() {
         try {
             await login(`/usuarios/logar`, userLogin, setToken)
 
-            toast.success("usuario logado com sucesso", {
+            toast.success("Usuário logado com sucesso", {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -53,7 +53,7 @@ function Login() {
                 progress: undefined,
             })
         } catch (error) {
-            toast.error("Dados inconsistentes. erro ao logar.", {
+            toast.error("Erro ao logar- Verifique se usuário e senha estão corretos", {
                 position: "top-right",
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -67,10 +67,10 @@ function Login() {
     }
 
     return (
-        <>
-            <Grid container direction='row' justifyContent='center' alignItems='center'>
+        <>    
+            <Grid container xs={12} direction='row' justifyContent='center' alignItems='center' className="bodyLogin">
                 <Grid alignItems='center' xs={4} >
-                    <Box display="flex" justifyContent="center" marginTop={6}>
+                    <Box display="flex" justifyContent="center" marginTop={-2}>
                         <img src="https://i.imgur.com/FpzQD5k.png" className="haquaLogoLogin" alt="" />
                     </Box>
                     <Box>

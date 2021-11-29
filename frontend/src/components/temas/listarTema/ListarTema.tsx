@@ -4,7 +4,6 @@ import { Box, Card, CardActions, CardContent, Button, Typography } from '@materi
 import { Grid } from '@mui/material';
 import Tema from '../../../models/Tema';
 import './ListarTema.css';
-import useLocalStorage from 'react-use-localstorage';
 import { useHistory } from 'react-router-dom';
 import { busca } from '../../../services/Service';
 import { useSelector } from 'react-redux';
@@ -52,6 +51,7 @@ function ListaTema() {
 
   return (
     <>
+    <Grid container className="bodyTema" justifyContent="center">
       <Box marginTop={12}>
         {
 
@@ -84,7 +84,7 @@ function ListaTema() {
         }
 
       </Box>
-
+    </Grid>
     </>
   );
 }

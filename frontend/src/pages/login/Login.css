@@ -1,3 +1,10 @@
+.bodyLogin{
+  background: #022A43 !important;
+  width: 100vh;
+  height: 100vh;
+
+}
+
 .haquaLogoHome{
   width: 119px !important;
   height: 111px !important;
@@ -75,8 +82,4 @@
   line-height: 21px;
 
   color: #98C7E4;
-}
-
-body{
-  background: #022A43;
 }
